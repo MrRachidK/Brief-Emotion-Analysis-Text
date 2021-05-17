@@ -1,7 +1,7 @@
 # Import of the libraries and the databases we need to analyze
 import sys
 sys.path.insert(0, '/home/apprenant/Documents/Brief-Emotion-Analysis-Text/')
-import pandas as pd 
+import pandas as pd
 from src.functions import separator
 
 emotion_final = pd.read_csv("/home/apprenant/Documents/Brief-Emotion-Analysis-Text/data/01_raw/Emotion_final.csv")
@@ -35,15 +35,12 @@ separator()
 print(text_emotion.dtypes)
 separator()
 
-# 5. Conversion of object values
+# 5. Change name of columns
 
-emotion_final['Text'] = emotion_final['Text'].astype(str)
-emotion_final['Emotion'] = emotion_final['Emotion'].astype(str)
+emotion_final = emotion_final.rename(columns={'Text': 'text', 'Emotion': 'label'})
+text_emotion = text_emotion.rename(columns={'sentiment':'label', 'content': 'text'})
 
-text_emotion['sentiment'] = text_emotion['sentiment'].astype(str)
-text_emotion['content'] = text_emotion['content'].astype(str)
-
-# 6. Creation of the cleaned data
+# 5. Creation of the cleaned data
 
 emotion_final.to_csv('/home/apprenant/Documents/Brief-Emotion-Analysis-Text/data/02_cleaned/cleaned_emotion_final.csv', index=False)
 text_emotion.to_csv('/home/apprenant/Documents/Brief-Emotion-Analysis-Text/data/02_cleaned/cleaned_text_emotion.csv', index=False)
