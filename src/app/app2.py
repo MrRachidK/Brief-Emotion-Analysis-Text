@@ -6,7 +6,8 @@ def app():
     
     
     if method == 'Régression logistique' : 
-        st.write('Régression logistique')
+        st.write('valeur de l\'accuracy')
+        st.image('/home/apprenant/simplon_project/Brief-Emotion-Analysis-Text/images/logistic_regression/step1_data1_results.png')
     elif method == 'XGBoost' :
         st.write('XGBoost')
     elif method == 'Random Forest' :
