@@ -7,10 +7,10 @@ def app():
     #--------------------------------------------#
     #            Import data                     #
     #--------------------------------------------#
-    ef_brut = pd.read_csv('/home/apprenant/simplon_project/Brief-Emotion-Analysis-Text/data/01_raw/Emotion_final.csv')
-    ef_clean = pd.read_csv('/home/apprenant/simplon_project/Brief-Emotion-Analysis-Text/data/02_cleaned/cleaned_emotion_final.csv')
-    te_brut = pd.read_csv('/home/apprenant/simplon_project/Brief-Emotion-Analysis-Text/data/01_raw/text_emotion.csv')
-    te_clean = pd.read_csv('/home/apprenant/simplon_project/Brief-Emotion-Analysis-Text/data/02_cleaned/cleaned_text_emotion.csv')
+    ef_brut = pd.read_csv('/home/apprenant/Documents/Brief-Emotion-Analysis-Text/data/01_raw/Emotion_final.csv')
+    ef_clean = pd.read_csv('/home/apprenant/Documents/Brief-Emotion-Analysis-Text/data/02_cleaned/cleaned_emotion_final.csv')
+    te_brut = pd.read_csv('/home/apprenant/Documents/Brief-Emotion-Analysis-Text/data/01_raw/text_emotion.csv')
+    te_clean = pd.read_csv('/home/apprenant/Documents/Brief-Emotion-Analysis-Text/data/02_cleaned/cleaned_text_emotion.csv')
 
     #--------------------------------------------#
     #                Header                      #
