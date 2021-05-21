@@ -2,7 +2,7 @@
 
 import sys
 from altair.vegalite.v4.api import value
-sys.path.insert(0, "/home/apprenant/Documents/Brief-Emotion-Analysis-Text/")
+sys.path.insert(0, "//home/apprenant/simplon_project/Brief-Emotion-Analysis-Text/")
 import pandas as pd
 import numpy as np
 import warnings
@@ -21,8 +21,8 @@ from src.functions import plot_roc
 # Import of the databases
 
 def import_database():
-    database1 = pd.read_csv('/home/apprenant/Documents/Brief-Emotion-Analysis-Text/data/02_cleaned/cleaned_emotion_final.csv')
-    database2 = pd.read_csv('/home/apprenant/Documents/Brief-Emotion-Analysis-Text/data/02_cleaned/cleaned_text_emotion.csv')
+    database1 = pd.read_csv('/home/apprenant/simplon_project/Brief-Emotion-Analysis-Text/data/02_cleaned/cleaned_emotion_final.csv')
+    database2 = pd.read_csv('/home/apprenant/simplon_project/Brief-Emotion-Analysis-Text/data/02_cleaned/cleaned_text_emotion.csv')
     return database1, database2
 
 # Label-encoding of the 'emotion' column
