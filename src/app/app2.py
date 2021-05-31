@@ -16,7 +16,6 @@ def app():
 
     method = st.sidebar.radio('Modèles', ['Régression logistique', 'XGBoost', 'Random Forest', 'SVM', 'Reseau de neurones'])
     
-    
     if method == 'Régression logistique' : 
         st.markdown('Régression logistique')
         dataframe, accuracy1, dataframe2, accuracy2, dataframe3, accuracy3, dataframe4, accuracy4, y_pred, y_pred2, y_pred3, y_test, y_test2, y_test3 = joblib.load("regression_logistique.sav")
@@ -128,4 +127,22 @@ def app():
         st.dataframe(dataframe16)
         st.write("Accuracy :", accuracy13)
     else : 
-        st.write('Reseau de neurones')
+        st.markdown('Reseau de neurones')
+        score, score2, score3, score4 = joblib.load("neural_network.sav")
+        st.header('Etape 1')
+        st.subheader('Database 1')
+        st.write('Test loss:', round(score[0], 5))
+        st.write('Test accuracy:', round(score[1], 5))
+
+        st.subheader('Database 2')
+        st.write('Test loss:', round(score2[0], 5))
+        st.write('Test accuracy:', round(score2[1], 5))
+
+        st.header('Etape 2')
+        st.write('Test loss:', round(score3[0], 5))
+        st.write('Test accuracy:', round(score3[1], 5))
+
+        st.header('Etape 3')
+        st.write('Test loss:', round(score4[0], 5))
+        st.write('Test accuracy:', round(score4[1], 5))
+

@@ -126,6 +126,13 @@ def step3_svm_variables(database1, database2, liste1, liste2):
     y_test = database1['trinary_emotion']
     return X, y, X_test, y_test
 
+def step3_neuralnetwork_variables(database1, database2):
+    X = database2['text']
+    y = database2['trinary_emotion']
+    X_test = database1['text']
+    y_test = database1['trinary_emotion']
+    return X, y, X_test, y_test
+
 def calculate_accuracy_score(y_test, y_pred):
     acc = accuracy_score(y_test, y_pred)
     return round(acc, 5)
