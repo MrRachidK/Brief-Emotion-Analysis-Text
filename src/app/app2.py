@@ -6,7 +6,6 @@ sys.path.insert(0, "/home/apprenant/Documents/Brief-Emotion-Analysis-Text/")
 
 import streamlit as st # type: ignore
 from src.app.models.regression_logistique import *
-
 import joblib
 from src.functions import *
 
