@@ -13,9 +13,10 @@ def app():
     st.set_option('deprecation.showPyplotGlobalUse', False)
     st.title('Prédictions et résultats des differents models utlisés')
     
-
+    # Define a selection of the classifiers
     method = st.sidebar.radio('Modèles', ['Régression logistique', 'XGBoost', 'Random Forest', 'SVM', 'Reseau de neurones'])
     
+    # Condition to display the results of each classifier
     if method == 'Régression logistique' : 
         st.markdown('Régression logistique')
         dataframe, accuracy1, dataframe2, accuracy2, dataframe3, accuracy3, dataframe4, accuracy4, y_proba, y_proba2, y_proba3, y_test, y_test2, y_test3 = joblib.load("regression_logistique.sav")
@@ -76,16 +77,12 @@ def app():
         st.header('Etape 1')
         st.subheader('Database 1')
         st.dataframe(dataframe9)
-        # cross_val_score1 = calculate_cross_val_score(loaded_model9, text_train9, y_train9, 5)
-        # st.write("Cross Validation Score :", cross_val_score1)
         st.write("Train score (train) :", train_score1)
         st.write("Train score (test) :", train_score2)
         
 
         st.subheader('Database 2')
         st.dataframe(dataframe10)
-        # cross_val_score2 = calculate_cross_val_score(loaded_model10, text_train10, y_train10, 5)
-        # st.write("Cross Validation Score :", cross_val_score2)
         st.write("Train Score (train) :", train_score3)
         st.write("Train score (test) :", train_score4)
         
@@ -93,8 +90,6 @@ def app():
         st.header('Etape 2')
         st.subheader('Databases combinées')
         st.dataframe(dataframe11)
-        # cross_val_score3 = calculate_cross_val_score(loaded_model11, text_train11, y_train11, 5)
-        # st.write("Cross Validation Score :", cross_val_score3)
         st.write("Train Score (train) :", train_score5)
         st.write("Train score (test) :", train_score6)
         
