@@ -1,9 +1,8 @@
+import sys
+sys.path.insert(0, "/home/apprenant/Documents/Brief-Emotion-Analysis-Text/")
 import matplotlib.pyplot as plt
 from sklearn.metrics import roc_curve, auc
 import pandas as pd
-import sys
-from altair.vegalite.v4.api import value
-sys.path.insert(0, "/home/apprenant/Documents/Brief-Emotion-Analysis-Text/")
 import numpy as np
 import warnings
 warnings.filterwarnings("ignore")
@@ -14,8 +13,8 @@ from sklearn.metrics import accuracy_score, roc_curve, auc
 def separator():
     print('------------------------------')
 
-def plot_roc(y_test, y_pred):
-    fpr, tpr, thresholds = roc_curve(y_test, y_pred)
+def plot_roc(y_test, y_proba):
+    fpr, tpr, thresholds = roc_curve(y_test, y_proba)
     auc_score = auc(fpr, tpr)
     plt.figure(1)
     plt.plot([0, 1], [0, 1], 'k--')
@@ -99,8 +98,9 @@ def calculate_cross_val_score(model, X, y, cv):
 
 def predict_model(model, X_test, X_test2):
     y_pred = model.predict(X_test)
-    dataframe = pd.DataFrame({'text':X_test2, 'predictions':y_pred}).head(10)
-    return y_pred, dataframe
+    y_proba = model.predict_proba(X_test)[:,1]
+    dataframe = pd.DataFrame({'text':X_test2, 'predictions':y_pred, 'proba_predictions':y_proba})
+    return y_pred, y_proba, dataframe
 
 ### Fonctions de l'étape 2
 

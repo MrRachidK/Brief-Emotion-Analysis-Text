@@ -29,7 +29,7 @@ X_train9, X_test9, y_train9, y_test9 = variables_selection(emotion_final['text']
 vectorizer9 = vectorize_data(CountVectorizer, emotion_final['text'], None)
 text_train9, text_test9 = transform_training_data(vectorizer9, X_train9, X_test9)
 model9 = define_model(RandomForestClassifier(random_state=42), text_train9, y_train9)
-y_pred9, dataframe9 = predict_model(model9, text_test9, X_test9)
+y_pred9, y_proba9, dataframe9 = predict_model(model9, text_test9, X_test9)
 train_score1 = calculate_score(model9, text_train9, y_train9)
 train_score2 = calculate_score(model9, text_test9, y_test9)
 
@@ -41,7 +41,7 @@ X_train10, X_test10, y_train10, y_test10 = variables_selection(text_emotion['tex
 vectorizer10 = vectorize_data(CountVectorizer, text_emotion['text'], None)
 text_train10, text_test10 = transform_training_data(vectorizer10, X_train10, X_test10)
 model10 = define_model(RandomForestClassifier(random_state=42), text_train10, y_train10)
-y_pred10, dataframe10 = predict_model(model10, text_test10, X_test10)
+y_pred10, y_proba10, dataframe10 = predict_model(model10, text_test10, X_test10)
 train_score3 = calculate_score(model10, text_train10, y_train10)
 train_score4 = calculate_score(model10, text_test10, y_test10)
 
@@ -56,7 +56,7 @@ X_train11, X_test11, y_train11, y_test11 = variables_selection(new_emotion_text[
 vectorizer11 = vectorize_data(CountVectorizer, new_emotion_text['text'], None)
 text_train11, text_test11 = transform_training_data(vectorizer11, X_train11, X_test11)
 model11 = define_model(RandomForestClassifier(random_state=42), text_train11, y_train11)
-y_pred11, dataframe11 = predict_model(model11, text_test11, X_test11)
+y_pred11, y_proba11, dataframe11 = predict_model(model11, text_test11, X_test11)
 train_score5 = calculate_score(model11, text_train11, y_train11)
 train_score6 = calculate_score(model11, text_test11, y_test11)
 
@@ -66,7 +66,7 @@ X_rf, y_rf, X_test12, y_test12 = step3_variables(emotion_final, text_emotion)
 vectorizer12 = vectorize_data(CountVectorizer, X_rf, X_test12, 1)
 text_train12, text_test12 = transform_training_data(vectorizer12, X_rf, X_test12)
 model12 = define_model(RandomForestClassifier(random_state=42), text_train12, y_rf)
-y_pred12, dataframe12 = predict_model(model12, text_test12, X_test12)
+y_pred12, y_proba12, dataframe12 = predict_model(model12, text_test12, X_test12)
 accuracy9 = calculate_accuracy_score(y_test12, y_pred12)
 
 

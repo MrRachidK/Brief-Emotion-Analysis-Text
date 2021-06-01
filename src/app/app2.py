@@ -18,25 +18,25 @@ def app():
     
     if method == 'Régression logistique' : 
         st.markdown('Régression logistique')
-        dataframe, accuracy1, dataframe2, accuracy2, dataframe3, accuracy3, dataframe4, accuracy4, y_pred, y_pred2, y_pred3, y_test, y_test2, y_test3 = joblib.load("regression_logistique.sav")
+        dataframe, accuracy1, dataframe2, accuracy2, dataframe3, accuracy3, dataframe4, accuracy4, y_proba, y_proba2, y_proba3, y_test, y_test2, y_test3 = joblib.load("regression_logistique.sav")
         st.header('Etape 1')
         st.subheader('Database 1')
         st.dataframe(dataframe)
         st.write("Accuracy :", accuracy1)
-        figure = plot_roc(y_test, y_pred)
+        figure = plot_roc(y_test, y_proba)
         st.pyplot(figure)
 
         st.subheader('Database 2')
         st.dataframe(dataframe2)
         st.write("Accuracy :", accuracy2)
-        figure = plot_roc(y_test2, y_pred2)
+        figure = plot_roc(y_test2, y_proba2)
         st.pyplot(figure)
 
         st.header('Etape 2')
         st.subheader('Databases combinées')
         st.dataframe(dataframe3)
         st.write("Accuracy :", accuracy3)
-        figure = plot_roc(y_test3, y_pred3)
+        figure = plot_roc(y_test3, y_proba3)
         st.pyplot(figure)
 
         st.header('Etape 3')
@@ -45,25 +45,25 @@ def app():
 
     elif method == 'XGBoost' :
         st.markdown('XGBoost')
-        dataframe5, accuracy5, dataframe6, accuracy6, dataframe7, accuracy7, dataframe8, accuracy8, y_pred5, y_pred6, y_pred7, y_test5, y_test6, y_test7 = joblib.load("xg_boost.sav")
+        dataframe5, accuracy5, dataframe6, accuracy6, dataframe7, accuracy7, dataframe8, accuracy8, y_pred5, y_pred6, y_pred7, y_proba5, y_proba6, y_proba7, y_test5, y_test6, y_test7 = joblib.load("xg_boost.sav")
         st.header('Etape 1')
         st.subheader('Database 1')
         st.dataframe(dataframe5)
         st.write("Accuracy :", accuracy5)
-        figure = plot_roc(y_test5, y_pred5)
+        figure = plot_roc(y_test5, y_proba5)
         st.pyplot(figure)
 
         st.subheader('Database 2')
         st.dataframe(dataframe6)
         st.write("Accuracy :", accuracy6)
-        figure = plot_roc(y_test6, y_pred6)
+        figure = plot_roc(y_test6, y_proba6)
         st.pyplot(figure)
 
         st.header('Etape 2')
         st.subheader('Databases combinées')
         st.dataframe(dataframe7)
         st.write("Accuracy :", accuracy7)
-        figure = plot_roc(y_test7, y_pred7)
+        figure = plot_roc(y_test7, y_proba7)
         st.pyplot(figure)
 
         st.header('Etape 3')
