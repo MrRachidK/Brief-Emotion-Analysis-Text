@@ -3,9 +3,12 @@ from sklearn.feature_extraction.text import CountVectorizer
 import joblib
 import re
 
-model = joblib.load("regression_logistique_model.sav")
-vectorizer = CountVectorizer(min_df=0, lowercase=False)
+model = joblib.load("regression_logistique_model.joblib")
+vectorizer = joblib.load("regression_logistique_vectorizer.joblib")
+
 app = FastAPI()
+
+emotions = ['émotion négative', 'émotion positive']
 
 @app.get("/")
 async def home():
@@ -17,18 +20,17 @@ def preprocessor(text):
     text = re.sub('[\W]+', ' ', text.lower()) + ' '.join(emoticons).replace('-', '')
     return text
 
-def classify_message(model, message):    
+def classify_message(model, message) :
     message = preprocessor(message)
-    # vectorized_message = vectorizer.fit_transform([message])
-    # emotion = model[0].predict([[vectorized_message]])
-    # emotion_proba = model.predict_proba(vectorized_message)    
-    return {'emotion': "happy", 'emotion_probability': 1}
+    vectorized_message = vectorizer.transform([message])
+    emotion = model.predict(vectorized_message)
+    return {'emotion': emotions[int(emotion)]}
 
-@app.get('/predict_emotion/')
-async def detect_emotion_query(message: str):   
+# @app.get('/predict_emotion/')
+# async def detect_emotion_query(message: str):   
+#     return classify_message(model, message)
+
+@app.get('/predict_emotion/{message}')
+async def detect_emotion_path(message: str):
     return classify_message(model, message)
-
-# @app.get('/predict_emotion/{message}')
-# async def detect_emotion_path(message: str):
-# 	return classify_message(model, message)
 

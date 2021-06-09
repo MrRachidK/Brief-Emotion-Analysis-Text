@@ -119,4 +119,5 @@ accuracy4 = calculate_accuracy_score(y_test4, y_pred4)
 
 # Saving of the useful objects for our Streamlit app
 joblib.dump([dataframe, accuracy1, dataframe2, accuracy2, dataframe3, accuracy3, dataframe4, accuracy4, y_proba, y_proba2, y_proba3, y_test, y_test2, y_test3], filename)
-joblib.dump([model], "regression_logistique_model.joblib")
+joblib.dump(model, "regression_logistique_model.joblib")
+joblib.dump(vectorizer, "regression_logistique_vectorizer.joblib")
