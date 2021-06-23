@@ -26,10 +26,6 @@ def classify_message(model, message) :
     emotion = model.predict(vectorized_message)
     return {'emotion': emotions[int(emotion)]}
 
-# @app.get('/predict_emotion/')
-# async def detect_emotion_query(message: str):   
-#     return classify_message(model, message)
-
 @app.get('/predict_emotion/{message}')
 async def detect_emotion_path(message: str):
     return classify_message(model, message)
